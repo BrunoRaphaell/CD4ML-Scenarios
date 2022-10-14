@@ -1,0 +1,6 @@
+{
+    "normalize": true,
+    "alpha": 2,
+    "max_iter":1500,
+    "tol":0.0001
+}
