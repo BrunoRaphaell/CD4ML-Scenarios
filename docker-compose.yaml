@@ -2,7 +2,7 @@ version: "3.7"
 services:
   welcome:
     container_name: welcome_server
-    image: httpd:2.4-alpine
+    image: httpd:2.4.54-alpine
     ports:
       - "3000:80"
     volumes:
@@ -30,8 +30,9 @@ services:
     networks:
       - jenkins_nw
 
+# Alterado de docker.elastic.co/elasticsearch/elasticsearch:7.6.0 para docker.elastic.co/elasticsearch/elasticsearch:8.5.2
   es01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.2
     container_name: es01
     environment:
       - node.name=es01
@@ -60,7 +61,7 @@ services:
       - jenkins
 
   kib01:
-    image: docker.elastic.co/kibana/kibana:7.6.0
+    image: docker.elastic.co/kibana/kibana:8.5.2
     container_name: kib01
     ports:
       - 5601:5601
@@ -124,6 +125,7 @@ services:
     networks:
       - jenkins_nw
 
+# MLflow alterado no dockerfile
   mlflow:
     container_name: mlflow
     build:
@@ -142,6 +144,7 @@ services:
     depends_on:
       - minio
   
+# Alterado a tag de 54462805efcb para 2ace7f71087a
   dev:
     container_name: dev
     image: jupyter/minimal-notebook:54462805efcb
